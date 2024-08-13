@@ -1,7 +1,9 @@
 "use client"
 
 import React from 'react'
-import Slider from "react-slick"
+import Slide from './Slide';
+import Slider from 'react-slick';
+
 
 export default function Hero() {
 
@@ -10,7 +12,9 @@ export default function Hero() {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay:true,
+        pauseOnHover:false,
       };
 
       const slideData = [
@@ -35,12 +39,22 @@ export default function Hero() {
             mainTitle: "MEN FASHION SUMMER SALE",
             price:"50$",
         }
-      ]
+      ];
 
   return (
     <div className=''>
         <div className='container pt-6 lg:pt-8'>
-<Slider {...settings}></Slider>
+<Slider {...settings}>
+   {slideData.map((item)=>(
+    <Slide key={item.id}
+    img={item.img}
+    title={item.title}
+    mainTitle={item.mainTitle}
+    price={item.price}/>
+
+ 
+   ))}
+</Slider>
         </div>
     </div>
   )
